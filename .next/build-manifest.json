@@ -17,6 +17,10 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
+    "/annotated-layout": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
     "/": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
