@@ -39991,7 +39991,34 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(AnnotatedLayout)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {});
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+      discount: "10%",
+      enabled: false
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleSubmit", function () {
+      _this.setState({
+        discount: _this.state.discount
+      });
+
+      console.log("submission", _this.state);
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleChange", function (field) {
+      console.log("field", field);
+      return function (value) {
+        return _this.setState(_defineProperty({}, field, value));
+      };
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleToggle", function () {
+      _this.setState(function (_ref) {
+        var enabled = _ref.enabled;
+        return {
+          enabled: !enabled
+        };
+      });
+    });
 
     return _this;
   }
@@ -39999,12 +40026,40 @@ function (_React$Component) {
   _createClass(AnnotatedLayout, [{
     key: "render",
     value: function render() {
+      var _this$state = this.state,
+          discount = _this$state.discount,
+          enabled = _this$state.enabled;
+      var contentStatus = enabled ? "Disable" : "Enable";
+      var textStatus = enabled ? "enabled" : "disabled";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Page"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Layout"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Layout"].AnnotatedSection, {
         title: "Default discount",
         description: "When you add a product to Sample App, it will automatically be discounted by this percentage."
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Card"], {
         sectioned: true
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Card")))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["FormLayout"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["TextField"], {
+        value: discount,
+        onChange: this.handleChange("discount"),
+        label: "Discount percentage",
+        type: "discount"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Stack"], {
+        distribution: "trailing"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+        primary: true,
+        submit: true
+      }, "Save")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["Layout"].AnnotatedSection, {
+        title: "Price updates",
+        description: "Temporarily disable all Sample App price updates"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["SettingToggle"], {
+        action: {
+          content: contentStatus,
+          onAction: this.handleToggle
+        },
+        enabled: enabled
+      }, "This setting is", " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_shopify_polaris__WEBPACK_IMPORTED_MODULE_1__["TextStyle"], {
+        variation: "strong"
+      }, textStatus), "."))));
     }
   }]);
 
