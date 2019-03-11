@@ -6,4 +6,4 @@
 - Run ngrok: ngrok http 3000
 - Updated the ngrok URL in the https://partners.shopify.com app setup page
 
-> Next steps: Build a resource list from a query on https://help.shopify.com/en/api/tutorials/build-a-shopify-app-with-node-and-react/fetch-data-with-apollo
+> Next steps: Using localStorage to persist data on https://help.shopify.com/en/api/tutorials/build-a-shopify-app-with-node-and-react/fetch-data-with-apollo
