@@ -1,4 +1,6 @@
 import { EmptyState, Layout, Page, ResourcePicker } from "@shopify/polaris";
+import store from "store-js";
+import ResourceListWithProducts from "../components/ResourceList";
 
 class Index extends React.Component {
   state = { open: false };
@@ -6,7 +8,7 @@ class Index extends React.Component {
   handleSelection = resources => {
     const idsFromResources = resources.selection.map(product => product.id);
     this.setState({ open: false });
-    console.log(idsFromResources);
+    store.set("ids", idsFromResources);
   };
 
   render() {
@@ -35,6 +37,7 @@ class Index extends React.Component {
           >
             <p>Select products to change their price temporarily.</p>
           </EmptyState>
+          <ResourceListWithProducts />
         </Layout>
       </Page>
     );
